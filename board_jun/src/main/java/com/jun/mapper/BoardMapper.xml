@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jun.mapper.BoardMapper">
+
+	<!-- id = 추상메소드의 이름 -->
+
+
+
+	<select id="boardList" resultType="com.jun.model.BoardVO">
+		select * from board
+	</select>
+
+	<!-- insert는 추가하기 때문에 어떤 데이터 타입을 추가하는지 알려주기 위하여 parametertype을 명시해준다. -->
+	<!-- 입력받을 정보를 추가하는 SQL문 -->
+	<insert id="boardinsert" parameterType="com.jun.model.BoardVO">
+		insert into board(title, writer, content) values(#{title}, #{writer},
+		#{content})
+	</insert>
+
+	<!-- 특정 게시글 하나를 가져오는 SQL문 -->
+	<!-- 넣어주는 데이터 하나면, parameterType 생략 가능 -->
+	<select id="boardcontents" resultType="com.jun.model.BoardVO">
+		select * from board where idx = #{idx}
+	</select>
+
+	<delete id="boarddelete">
+		delete from board where idx = #{idx}
+
+	</delete>
+
+
+	<update id="boardUpdate" parameterType="com.jun.model.BoardVO">
+		update board set title=#{title}, writer=#{writer}, content=#{content} where
+		idx=#{idx}
+	</update>
+
+	<select id="boardSearch" resultType="com.jun.model.BoardVO">
+		select * from board
+		where title Like #{title}
+
+
+	</select>
+
+	<!-- 회원가입 -->
+	<insert id="memberjoin" parameterType="com.jun.model.MemberVO">
+		insert into member
+		values(#{id}, #{pw}, #{nick})
+
+	</insert>
+
+	
+	
+	<select id="memberLogin"  parameterType="com.jun.model.MemberVO" resultType="com.jun.model.MemberVO">
+	    select * from member 
+	    where id = #{id} and pw = #{pw}
+	    
+	    
+	    
+	</select>
+	
+	<delete id="memeberDelete">
+		delete from member where id = #{id}
+
+	</delete>
+	
+	
+	<select id="search" resultType="com.jun.model.BoardVO">
+	    select * from board where title LIKE #{search}
+	    
+	    
+	</select>
+	
+	
+	
+	<!-- 댓글 추가 -->
+	<insert id="CommentInsert" parameterType="com.jun.model.CommentVO" >
+	insert into comment(idx, writer, content)
+    values(#{idx},#{writer}, #{content});
+	    
+	    
+	</insert>
+	
+	<!-- 댓글 조회  -->
+	<select id="Commentget" parameterType="int" resultType="com.jun.model.CommentVO">
+	select * from comment where idx = #{idx}		
+</select>
+	
+	<delete id="CommentDelete">
+	 delete from comment where cno = #{cno}    
+	    
+	    
+	    
+	</delete>
+	
+	
+</mapper>
