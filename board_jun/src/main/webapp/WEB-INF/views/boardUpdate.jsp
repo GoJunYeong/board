@@ -57,7 +57,6 @@
 					
 				</form>
 			</div>
-			<div class="panel-footer">고준영</div>
 		</div>
 	</div>
 
