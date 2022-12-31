@@ -126,18 +126,17 @@ function goDelete(idx, writer, id) {
 	
 	if(writer==id || id == "admin"){
 	$.ajax({
-		url : 'boardDelete.do', // 어디로 요청할지
-		type : 'get', // Get? Post?
+		url : 'boardDelete.do', // 요청
+		type : 'get', // 
 		// dataType : 'json', // 응답내용이 무슨 형식인지
 		data : { // 어떤 데이터를 보낼지
 			"idx" : idx,
 		},
 		success : function(res) {
 			location.href = "boardList.do";
-			/* alert("삭제 되었습니다."); */
 			alert("성공적으로 삭제되었습니다.");
-			// 성공했을 때, 어떤코드가 실행이 될지
-			// res --> 컨트롤러가 응답해준 내용이 담김 
+		
+		
 			
 
 		},
