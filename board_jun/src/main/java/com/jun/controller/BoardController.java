@@ -28,9 +28,20 @@ public class BoardController {
 	private BoardMapper mapper;
 
 	
-	
-	
-	
+
+	@RequestMapping("test.do")
+	private String redirectUrl(HttpServletRequest request) {
+		// String hearder = request.getHeader("Referer").substring(27);
+	String hearder = request.getHeader("Referer");
+		
+		  if (request.getHeader("Referer") != null) {
+			  System.out.println(hearder);
+			 // http://localhost:8083/main/MemberDelete.do
+		    return "redirect:/" + hearder;
+		  } else {
+		    return "redirect:/" + hearder;
+		  }
+		}
 	
 	// 로그인 하기 전 첫화면
 	@RequestMapping("LoginMain.do")
@@ -92,9 +103,22 @@ public class BoardController {
 
 		return "LoginMain";
 	}
+	
+	
+	// 회원탈퇴 페이지
+	@GetMapping("MemberDelete.do")
+	public String MemberDelete() {
+		
 
-	// ------------------------------회원
-	// 컨트롤러--------------------------------------------------------------------------------
+		return "MemberDelete";
+	}
+	// 회원
+	
+	
+	
+	
+	
+	
 	// 글 목록 보여주는 컨트롤러
 	@RequestMapping("boardList.do")
 	public String list(Model model) {

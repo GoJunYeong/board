@@ -71,7 +71,7 @@
 						<c:forEach var="reply" items="${com}" >
 <li>
 	<div>
-		<p>${reply.writer} / ${reply.indate} <button  onclick="comDelete('${reply.cno}',${reply.idx})"  >삭제</button></p>
+		<p>${reply.writer} / ${reply.indate} <button  onclick="comDelete('${reply.cno}','${reply.idx}')"  >삭제</button></p>
 		<p>${reply.content }</p>
 	</div>
 </li>	
@@ -96,7 +96,7 @@
 		</p>
 		<p>
 			<input type="hidden" name="idx" value="${board.idx}">
-			<button type="submit">작성</button>
+			<button type="submit">등록</button>
 		</p>
 	</form>
 	

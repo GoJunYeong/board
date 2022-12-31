@@ -40,7 +40,7 @@ body {
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
                     
-                        <form id="login-form" class="form" action="Login.do" method="post">
+                        <form id="login-form" class="form" action="Login.do" method="post" name="lo" onsubmit="return check()">
                             <h3 class="text-center text-info">로그인</h3>
                             <div class="form-group">
                                 <label for="username" class="text-info">아이디</label><br>
@@ -64,6 +64,27 @@ body {
             </div>
         </div>
     </div>
+<script type="text/javascript">
+function check() {
+    
+    var f = document.lo;
 
+     // 제목이 공백이면
+    if (f.id.value == "") {
+        alert("아이디를 입력해주세요");
+        f.id.focus();
+        return false;
+    }// 내용이 공백이면 
+     if (f.pw.value == "") {
+        alert("비밀번호를 입력해주세요");
+        f.pw.focus();
+        return false;
+     
+}
+}
+
+
+
+</script>
 </body>
 </html>
